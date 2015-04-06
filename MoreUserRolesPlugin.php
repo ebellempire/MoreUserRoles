@@ -2,7 +2,11 @@
 
 class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 {
-    protected $_hooks = array('define_acl','uninstall');
+    protected $_hooks = array(
+    	'define_acl',
+    	'uninstall',
+    	'admin_users_form'
+    	);
 
 
     public function hookDefineAcl($args)
@@ -22,6 +26,30 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 		$acl->allow('editor','Items',array('edit','delete'));
 		$acl->allow('editor','Files',array('edit','delete'));
 		
+    }
+    
+    public function hookAdminUsersForm($args){
+			// reorder and annotate the Role dropdown menu choices and update the explanatory text.
+			?>
+			<script type="text/javascript">
+				var betterOrder=['researcher','contributor','author','editor','admin','super'];
+				var selected = jQuery("#role").val();
+				resortedRoles=[]
+				betterOrder.forEach(function(name){
+					var note=(name=='author'||name=='editor') ? ' (More User Roles plugin)' : '';
+					var opt='<option value="'+name+'">'+name.charAt(0).toUpperCase()+ name.slice(1)+note+'</option>';
+					resortedRoles.push(opt);
+				});
+				var parser = document.createElement('a');
+				parser.href = jQuery(location).attr('href');
+				var slug=parser.pathname;
+				jQuery("#role").empty().append( resortedRoles );
+				if(slug.indexOf('edit')){
+					jQuery("#role").val(selected); 	
+					}
+				jQuery('#role-label ~ div p').append(' See also <a href="https://github.com/ebellempire/MoreUserRoles" target=_blank">More User Roles plugin documentation</a>.');
+			</script>
+			<?php
     }
     
         
