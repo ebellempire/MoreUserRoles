@@ -20,6 +20,7 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 		$acl->addRole(new Zend_Acl_Role('editor'), 'author');		
 		// ... but are able to edit and delete Items created by other users
 		$acl->allow('editor','Items',array('edit','delete'));
+		$acl->allow('editor','Files',array('edit','delete'));
 		
     }
     
