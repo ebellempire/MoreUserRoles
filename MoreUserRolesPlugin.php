@@ -16,7 +16,7 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 		$acl->allow('author','Items',array('makePublic','makeFeatured'));
 
         
-        // EDITORS inherit the rights of Contributors...
+        // EDITORS inherit the rights of Authors...
 		$acl->addRole(new Zend_Acl_Role('editor'), 'author');		
 		// ... but are able to edit and delete Items created by other users
 		$acl->allow('editor','Items',array('edit','delete'));
