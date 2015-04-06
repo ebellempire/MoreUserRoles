@@ -17,13 +17,13 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
         // AUTHORS inherit the rights of Contributors...
 		$acl->addRole(new Zend_Acl_Role('author'), 'contributor');		
 		// ... but are able to publish their own items
-		$acl->allow('author','Items',array('makePublic','makeFeatured'));
+		$acl->allow('author','Items',array('makePublic'));
 
         
         // EDITORS inherit the rights of Authors...
 		$acl->addRole(new Zend_Acl_Role('editor'), 'author');		
-		// ... but are able to edit and delete Items created by other users
-		$acl->allow('editor','Items',array('edit','delete'));
+		// ... but are able to edit and delete Items and Files created by other users and make items Featured
+		$acl->allow('editor','Items',array('makeFeatured','edit','delete'));
 		$acl->allow('editor','Files',array('edit','delete'));
 		
     }
