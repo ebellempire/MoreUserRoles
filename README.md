@@ -13,5 +13,5 @@ This plugin adds two new user roles to Omeka sites, modifies one, and lightly mo
 
 ## Form Modifications
 * Sorts user roles by "power" – from least to most – in the user admin dropdowns
-* Annotates which user roles are created by the plugin
+* Annotates which user roles are created or modified by the plugin
 * Adds a link to plugin documentation on Github.
