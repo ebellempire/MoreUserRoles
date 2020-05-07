@@ -26,6 +26,9 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 		$acl->allow('editor','Items',array('makeFeatured','edit','delete'));
 		$acl->allow('editor','Files',array('edit','delete'));
 		$acl->allow('editor','Users',array('browse'));
+	    
+        // RESEARCHERS (existing role) given the ability to view unpublished Exhibits 
+	    	$acl->allow('researcher', 'ExhibitBuilder_Exhibits', 'showNotPublic');
 		
     }
     
@@ -38,7 +41,8 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 				resortedRoles=[]
 				betterOrder.forEach(function(name){
 					var note=(name=='author'||name=='editor') ? ' (More User Roles plugin)' : '';
-					var opt='<option value="'+name+'">'+name.charAt(0).toUpperCase()+ name.slice(1)+note+'</option>';
+					var note2=(name=='researcher') ? ' (More User Roles plugin modification) : '';
+					var opt='<option value="'+name+'">'+name.charAt(0).toUpperCase()+ name.slice(1)+note+note2+'</option>';
 					resortedRoles.push(opt);
 				});
 				var parser = document.createElement('a');
