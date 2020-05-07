@@ -41,7 +41,7 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 				resortedRoles=[]
 				betterOrder.forEach(function(name){
 					var note=(name=='author'||name=='editor') ? ' (More User Roles plugin)' : '';
-					var note2=(name=='researcher') ? ' (More User Roles plugin modification) : '';
+					var note2=(name=='researcher') ? ' (More User Roles plugin modification)': '';
 					var opt='<option value="'+name+'">'+name.charAt(0).toUpperCase()+ name.slice(1)+note+note2+'</option>';
 					resortedRoles.push(opt);
 				});
