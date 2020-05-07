@@ -29,7 +29,7 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 	    
         // RESEARCHERS (existing role) given the ability to view unpublished Exhibits 
 	   	if (plugin_is_active(‘ExhibitBuilder’)) {
-             $acl->allow('researcher', 'ExhibitBuilder_Exhibits', 'showNotPublic');   
+			$acl->allow('researcher', 'ExhibitBuilder_Exhibits', 'showNotPublic');   
 	   	}
 		
     }
